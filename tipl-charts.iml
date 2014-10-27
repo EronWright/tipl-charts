@@ -147,9 +147,9 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.apache.spark:spark-bagel_2.10:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.spark:spark-mllib_2.10:1.1.0" level="project" />
     <orderEntry type="library" name="Maven: org.jblas:jblas:1.2.3" level="project" />
-    <orderEntry type="library" name="Maven: org.scalanlp:breeze_2.10:0.9" level="project" />
+    <orderEntry type="library" name="Maven: org.scalanlp:breeze_2.10:0.10" level="project" />
     <orderEntry type="library" name="Maven: org.scalanlp:breeze-macros_2.10:0.3.1" level="project" />
-    <orderEntry type="library" name="Maven: org.scalamacros:quasiquotes_2.10:2.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.scalamacros:quasiquotes_2.10:2.0.0-M8" level="project" />
     <orderEntry type="library" name="Maven: com.github.fommil.netlib:core:1.1.2" level="project" />
     <orderEntry type="library" name="Maven: net.sourceforge.f2j:arpack_combined_all:0.1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.opencsv:opencsv:2.3" level="project" />
@@ -168,10 +168,10 @@
     <orderEntry type="library" name="Maven: com.twitter:parquet-format:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.twitter:parquet-jackson:1.4.3" level="project" />
     <orderEntry type="module" module-name="tipl-ccgeom" />
-    <orderEntry type="library" name="Maven: com.github.wookietreiber:scala-chart_2.11:0.4.2" level="project" />
+    <orderEntry type="library" name="Maven: com.github.wookietreiber:scala-chart_2.10:0.4.2" level="project" />
     <orderEntry type="library" name="Maven: org.jfree:jfreechart:1.0.17" level="project" />
     <orderEntry type="library" name="Maven: org.jfree:jcommon:1.0.21" level="project" />
-    <orderEntry type="library" name="Maven: org.scala-lang.modules:scala-swing_2.11:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: org.scala-lang:scala-swing:2.10.4" level="project" />
     <orderEntry type="library" name="Maven: com.lowagie:itext:4.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bctsp-jdk14:1.38" level="project" />
     <orderEntry type="library" name="Maven: org.bouncycastle:bcprov-jdk14:1.38" level="project" />

@@ -38,7 +38,7 @@
             <artifactId>spark-core_${scala.binary.version}</artifactId>
             <version>${spark.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming_${scala.binary.version}</artifactId>
@@ -49,29 +49,30 @@
             <artifactId>tipl-core</artifactId>
             <version>${tipl.version}</version>
         </dependency>
+
         <dependency>
             <groupId>quant.tipl</groupId>
             <artifactId>tipl-spark</artifactId>
             <version>${tipl.version}</version>
         </dependency>
         <!-- breeze without overwriting anything else -->
-            <dependency>
-      <groupId>org.scalanlp</groupId>
-      <artifactId>breeze_${scala.binary.version}</artifactId>
-      <version>0.10</version>
-      <exclusions>
-        <!-- This is included as a compile-scoped dependency by jtransforms, which is
-             a dependency of breeze. -->
-        <exclusion>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>commons-math3</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
+        <dependency>
+            <groupId>org.scalanlp</groupId>
+            <artifactId>breeze_${scala.binary.version}</artifactId>
+            <version>0.10</version>
+            <exclusions>
+                <!-- This is included as a compile-scoped dependency by jtransforms, which is
+                     a dependency of breeze. -->
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.commons</groupId>
+                    <artifactId>commons-math3</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- plotting tools -->
         <dependency>
             <groupId>com.github.wookietreiber</groupId>
@@ -83,7 +84,7 @@
             <groupId>com.lowagie</groupId>
             <artifactId>itext</artifactId>
             <version>4.2.1</version>
-        </dependency>        
+        </dependency>
 
     </dependencies>
 
@@ -132,7 +133,7 @@
                 <configuration>
                     <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
                     <junitxml>.</junitxml>
-                    <filereports>${project.build.directory}/SparkTestSuite.txt</filereports>
+                    <filereports>SparkTestSuite.txt</filereports>
                     <argLine>-Xmx3g -XX:MaxPermSize=${MaxPermGen} -XX:ReservedCodeCacheSize=512m</argLine>
                     <stderr/>
                     <environmentVariables>
