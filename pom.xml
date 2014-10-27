@@ -1,0 +1,170 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>tipl-charts</artifactId>
+    <packaging>jar</packaging>
+    <name>charts</name>
+    <url>http://www.4quant.com</url>
+    <parent>
+        <groupId>quant.tipl</groupId>
+        <artifactId>quant-tipl</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.binary.version}</artifactId>
+            <version>2.1.5</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.binary.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_${scala.binary.version}</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>quant.tipl</groupId>
+            <artifactId>tipl-core</artifactId>
+            <version>${tipl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>quant.tipl</groupId>
+            <artifactId>tipl-spark</artifactId>
+            <version>${tipl.version}</version>
+        </dependency>
+        <!-- breeze without overwriting anything else -->
+            <dependency>
+      <groupId>org.scalanlp</groupId>
+      <artifactId>breeze_${scala.binary.version}</artifactId>
+      <version>0.10</version>
+      <exclusions>
+        <!-- This is included as a compile-scoped dependency by jtransforms, which is
+             a dependency of breeze. -->
+        <exclusion>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-math3</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+        <!-- plotting tools -->
+        <dependency>
+            <groupId>com.github.wookietreiber</groupId>
+            <artifactId>scala-chart_${scala.binary.version}</artifactId>
+            <version>0.4.2</version>
+        </dependency>
+        <!-- pdf tools -->
+        <dependency>
+            <groupId>com.lowagie</groupId>
+            <artifactId>itext</artifactId>
+            <version>4.2.1</version>
+        </dependency>        
+
+    </dependencies>
+
+    <build>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <reportPlugins>
+                            <plugin>
+                                <artifactId>maven-project-info-reports-plugin</artifactId>
+                            </plugin>
+                            <plugin>
+                                <groupId>net.alchim31.maven</groupId>
+                                <artifactId>scala-maven-plugin</artifactId>
+                                <reports>
+                                    <report>doc</report>
+                                </reports>
+                                <configuration>
+                                    <aggregateDirectOnly>false</aggregateDirectOnly>
+                                    <sendJavaToScalac>false</sendJavaToScalac>
+                                </configuration>
+                            </plugin>
+                            <plugin>
+                                <artifactId>maven-javadoc-plugin</artifactId>
+                                <reports>
+                                    <report>aggregate</report>
+                                </reports>
+                            </plugin>
+                        </reportPlugins>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+
+                <version>1.0-RC2</version>
+                <configuration>
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    <junitxml>.</junitxml>
+                    <filereports>${project.build.directory}/SparkTestSuite.txt</filereports>
+                    <argLine>-Xmx3g -XX:MaxPermSize=${MaxPermGen} -XX:ReservedCodeCacheSize=512m</argLine>
+                    <stderr/>
+                    <environmentVariables>
+                        <SPARK_TESTING>1</SPARK_TESTING>
+                    </environmentVariables>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- skip the dependencies resolution which takes ages -->
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </reporting>
+
+
+</project>
