@@ -84,11 +84,29 @@ class SparkTests extends FunSuite with LocalSparkContext {
     println("Current context is named: " + sc.appName)
   }
 
-  test("Make a plot for the class") {
+  test("Make a basic flat chart") {
     sc = getSpark("plotTest")
     import tipl.charts.spark._
     val b = sc.parallelize(1 to 1000).map(_*1.0)
-    b.showHistogram()
-
+    println(b.showHistogram().mkString(","))
   }
+
+  test("Make a quadratic distribution") {
+    sc = getSpark("plotTest_x^2")
+    import tipl.charts.spark._
+    val b = sc.parallelize(1 to 1000).map(math.pow(_,2))
+    println(b.showHistogram().mkString(","))
+  }
+
+  test("Make a few distributions") {
+    sc = getSpark("plotTest_x^2")
+    import tipl.charts.spark._
+    val a = sc.parallelize(1 to 1000).map(av => ("a",av*1.0))
+    val b = sc.parallelize(1 to 1000).map(bv => ("b",math.pow(bv,2)))
+    new manyDoubleRDD(a.union(b)).showHistograms()
+    //TODO this should work as well
+    //println(a.union(b).showHistogram().mkString(","))
+  }
+
+
 }
